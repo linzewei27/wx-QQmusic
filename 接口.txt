@@ -1,0 +1,2 @@
+'http://ws.stream.qqmusic.qq.com/C100' + xxx.songmid + '.m4a?fromtag=38'
+'http://y.gtimg.cn/music/photo_new/T002R150x150M000' + xx.albummid + '.jpg'

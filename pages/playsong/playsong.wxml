@@ -1,0 +1,35 @@
+  <!-- <view class="audio">
+  <audio src="http://ws.stream.qqmusic.qq.com/C100{{songId}}.m4a?fromtag=38" id="myAudio"></audio>
+  </view>   -->
+<view class="play" >
+  <view class="main">
+    <view class="info">
+      <view class="left">
+        <image src="http://y.gtimg.cn/music/photo_new/T002R150x150M000{{albId}}.jpg"></image>
+        <view class="left-info">
+          <text class="name">{{name}}</text>
+          <text class="singer" wx:for="{{singer}}"><text wx:if="{{index!=0}}">/</text>{{item.name}}<text></text></text>
+        </view>
+      </view>
+      <view class="right {{playSong?'':'pause'}}" bindtap="isPlay">
+      </view>
+    </view>
+    <view class="lrc {{playSong?'playSong':''}}">
+      <view class="cricle">
+        <image src="http://y.gtimg.cn/music/photo_new/T002R150x150M000{{albId}}.jpg"></image>
+      </view>
+    </view>
+    <view class="jindu">
+      <view class="nowTime">00:00</view>
+      <view class="jdt">
+        <view class="top"></view>
+        <view class="bottom"></view>
+      </view>
+      <view class="allTime">01:00</view>
+    </view>
+  </view>
+  <view class="bg" style="background-image:url(http://y.gtimg.cn/music/photo_new/T002R150x150M000{{albId}}.jpg)">
+
+  </view>
+  <view class="bamask"></view>
+</view>

@@ -1,0 +1,113 @@
+<view class="page01">
+    <view class="nav">
+      <view class="nav-list {{current==index?'curr':''}}" wx:for="{{navList}}" wx:key="{{navList}}" data-id="{{index}}" bindtap="cut">{{item}}</view>
+    </view>
+</view>
+<view class="content">
+<view class="slider" hidden="{{current != 0}}">
+  <swiper
+  autoplay="{{true}}"
+  indicator-dots="{{true}}"
+  indicator-color="red"
+  duration="{{2000}}"
+  >
+     <swiper-item wx:for="{{slider}}" wx:key="slider">
+         <image src="{{item.picUrl}}"></image>
+     </swiper-item>
+   
+  </swiper>
+  <view class="songList">
+    <view class="radio">
+      <view class="title">电台</view>
+      <view class="songs">
+        <view class="song" wx:for="{{radio}}" wx:key="song">
+        
+          <image src="{{item.picUrl}}"></image>
+          <text>{{item.Ftitle}}</text>
+          <view class="icon"></view>
+        </view>
+      </view>
+    </view>
+        <view class="hot_song">
+      <view class="title">热门歌单</view>
+      <view class="songs">
+        <view class="song" wx:for="{{songList}}" wx:key="songlist">
+        
+          <image src="{{item.picUrl}}"></image>
+          <text>{{item.songListDesc}}</text>
+          <text class="author">{{item.songListAuthor}}</text>
+          <view class="icon"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="find">
+    <text>去客户端发现更多好音乐></text>
+  </view>
+    <view class="computer">
+    <text>查看电脑网页版</text>
+  </view>
+  <view class="copyright">
+  <text>Copyright © 1998 - 2016 Tencent. All Rights Reserved. </text>
+  </view>
+</view>
+<!--排行榜-->
+<view class="phb" hidden="{{current != 1}}">
+  <view class="phb-one" wx:for="{{phb}}" wx:key="phb" data-id="{{item.id}}" bindtap="turn">
+      <view class="phb-pic">
+        <image src="{{item.picUrl}}"></image>
+      </view>
+      <view class="phb-title">
+        <view class="phb-name">{{item.topTitle}}</view>
+        <view class="phb-song" wx:for="{{item.songList}}" wx:key="item.songList">
+        <text>{{index+1}}  {{item.songname}}</text>
+        -{{item.singername}}
+        </view>
+      </view>
+      <view class="arrow">></view>
+  </view>
+</view>
+
+<!--搜索-->
+<view class="" hidden="{{current != 2}}">
+  <view class="search  {{!searchHot?'bottom-padding':''}}" >
+      <view class="search-song">
+        <icon type="search" size="16" color="{{item}}" />
+        <input placeholder="搜索歌曲、歌单、专辑" auto-focus bindfocus="startSearch" bindblur="search_song"/>
+        <text class="cancel" bindtap="">搜索</text>
+        
+      </view>
+      <view hidden="{{searchHot!=1}}">
+      <view class="history" wx:for="{{searchHistory}}"  wx:key="searchHistory" >
+        <view class="history_item">{{item}}</view>
+        <view class="clear">×</view>
+      </view>
+      </view>
+      <view class="hot" hidden="{{searchHot!=0}}">
+       <view class="title">热门搜索</view>
+       <view class="item">
+         <view  class="hot-item red" bindtap="searchHot" data-id="11">
+          {{hot}}
+         </view>
+         <view  class="hot-item" wx:for="{{search_data}}" wx:key="search_data" bindtap="searchHot"  data-id="{{index}}">
+          {{item.k}}
+         </view>
+       </view>
+      
+      </view>
+      <scroll-view scroll-y="true" style="height:1000rpx;"  bindscrolltolower="lower" >
+          <view class="search-list" wx:for="{{search}}" wx:key="list" bindtap="playsong" data-id="{{item.albummid}}" data-songid="{{item.songmid}}" data-albid="{{item.albummid}}" hidden="{{searchHot!=2}}">
+                  <!--data-songid="{{item.data.songmid}}" data-albid="{{item.data.albummid}}"  -->
+              <view class="pic">
+                <image src="../../images/music.png"></image>
+              </view>
+              <view class="info">
+                <text class="search-title">{{item.songname}}</text>
+                <text class="all-info"><text wx:for="{{item.singer}}" wx:key="item.singer">{{item.name}}</text></text>
+              </view>
+          </view> 
+      </scroll-view>
+  </view>
+</view>
+</view>

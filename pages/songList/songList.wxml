@@ -1,0 +1,23 @@
+<view class="songList">
+  <view class="pic">
+    <image src="{{data.topinfo.pic_album}}"></image>
+    <view class="name">
+      <view class="left">
+         <text class="phb-name">{{data.topinfo.ListName}}</text>
+          <text class="date">{{data.date}} 更新</text>
+      </view>
+        <view class="right">
+          <image src="../../images/icon-play.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="list" wx:for="{{data.songlist}}" wx:key="songList" bindtap="playsong" data-songid="{{item.data.songmid}}" data-name="{{item.data.songname}}" data-singer="{{item.data.singer}}" data-albid="{{item.data.albummid}}">
+    <view class="song" style="background-color:#{{color}}">
+      <text class="num">{{index+1}}</text>
+      <view class="info">
+        <text class="name">{{item.data.songname}}</text>
+        <text class="singer"><text wx:for="{{item.data.singer}}" wx:key="singer"><text wx:if="{{index!=0}}">/</text>{{item.name}}</text>{{}}-{{item.data.albumname}}</text>
+      </view>
+    </view>
+  </view>
+</view>
